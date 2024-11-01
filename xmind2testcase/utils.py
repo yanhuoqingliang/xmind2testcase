@@ -4,6 +4,9 @@ import json
 import os
 import xmind
 import logging
+
+from xmindparser import is_xmind_zen, xmind_to_dict
+
 from xmind2testcase.parser import xmind_to_testsuites
 
 
@@ -22,11 +25,32 @@ def get_absolute_path(path):
     return os.path.join(fp, fn)
 
 
+# def get_xmind_testsuites(xmind_file):
+#     """Load the XMind file and parse to `xmind2testcase.metadata.TestSuite` list"""
+#     xmind_file = get_absolute_path(xmind_file)
+#     workbook = xmind.load(xmind_file)
+#     xmind_content_dict = workbook.getData()
+#     logging.debug("loading XMind file(%s) dict data: %s", xmind_file, xmind_content_dict)
+#
+#     if xmind_content_dict:
+#         testsuites = xmind_to_testsuites(xmind_content_dict)
+#         return testsuites
+#     else:
+#         logging.error('Invalid XMind file(%s): it is empty!', xmind_file)
+#         return []
+
+
 def get_xmind_testsuites(xmind_file):
     """Load the XMind file and parse to `xmind2testcase.metadata.TestSuite` list"""
     xmind_file = get_absolute_path(xmind_file)
-    workbook = xmind.load(xmind_file)
-    xmind_content_dict = workbook.getData()
+    '''
+        适配xmind高版本
+    '''
+    if is_xmind_zen(xmind_file):
+        xmind_content_dict = xmind_to_dict(xmind_file)
+    else:
+        workbook = xmind.load(xmind_file)
+        xmind_content_dict = workbook.getData()
     logging.debug("loading XMind file(%s) dict data: %s", xmind_file, xmind_content_dict)
 
     if xmind_content_dict:

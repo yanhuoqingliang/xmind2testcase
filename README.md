@@ -276,9 +276,9 @@ Output:
 
 测试用例数据增加执行结果字段：result，示例如下：
 
-![测试用例数据](webtool/static/guide/testcase_json_demo.png)
+![测试用例数据](static/guide/testcase_json_demo.png)
 
-详情查看[使用指南](webtool/static/guide/index.md)，参考示例：[testcase json](docs/xmind_to_testcase_json.json)
+详情查看[使用指南](static/guide/index.md)，参考示例：[testcase json](docs/xmind_to_testcase_json.json)
 
 
 ##### （2）转为TestSuite JSON数据
@@ -425,7 +425,7 @@ Output:
 
 TestSuite增加执行结果统计字段：statistics，示例如下：
 
-![测试用例数据](webtool/static/guide/testsuite_json_demo.png)
+![测试用例数据](static/guide/testsuite_json_demo.png)
 
 参考示例：[testsuite json](docs/xmind_to_testsuite_json.json)
 
